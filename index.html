@@ -215,9 +215,9 @@
                 
                 const data = await response.json();
                 
-                if (response.status === 429 && data.retry) {
+                if ((response.status === 429 || response.status === 503) && data.retry) {
                     // Rate limited - show friendly message
-                    output.textContent = '⏳ The AI is busy right now. Retrying in 5 seconds...';
+                    output.textContent = '⏳ AI services are busy. Retrying in 5 seconds...';
                     output.classList.add('active');
                     
                     // Auto-retry after 5 seconds

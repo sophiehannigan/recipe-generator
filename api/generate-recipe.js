@@ -37,53 +37,68 @@ Please provide:
 
 Make it creative and tasty!`;
         
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`,
-                'HTTP-Referer': 'https://recipe-generator-psi-murex.vercel.app',
-                'X-Title': 'Recipe Generator'
-            },
-            body: JSON.stringify({
-                model: 'meta-llama/llama-3.2-3b-instruct:free',
-                messages: [
-                    {
-                        role: 'system',
-                        content: 'You are a professional chef who creates amazing, easy-to-follow recipes.'
+        // Try multiple free models in order of preference
+        const models = [
+            'google/gemini-2.0-flash-exp:free',
+            'meta-llama/llama-3.2-3b-instruct:free',
+            'google/gemini-flash-1.5:free',
+            'mistralai/mistral-7b-instruct:free'
+        ];
+        
+        let lastError = null;
+        
+        for (const model of models) {
+            try {
+                const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`,
+                        'HTTP-Referer': 'https://recipe-generator-psi-murex.vercel.app',
+                        'X-Title': 'Recipe Generator'
                     },
-                    {
-                        role: 'user',
-                        content: prompt
-                    }
-                ],
-                max_tokens: 1000
-            })
-        });
-        
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error('OpenRouter error:', errorText);
-            
-            // Check if it's a rate limit error
-            if (response.status === 429) {
-                return res.status(429).json({ 
-                    error: 'The AI service is busy right now. Please wait 5 seconds and try again.',
-                    retry: true
+                    body: JSON.stringify({
+                        model: model,
+                        messages: [
+                            {
+                                role: 'system',
+                                content: 'You are a professional chef who creates amazing, easy-to-follow recipes.'
+                            },
+                            {
+                                role: 'user',
+                                content: prompt
+                            }
+                        ],
+                        max_tokens: 1000
+                    })
                 });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const recipe = data.choices?.[0]?.message?.content;
+                    
+                    if (recipe) {
+                        return res.status(200).json({ recipe });
+                    }
+                }
+                
+                // If rate limited, try next model
+                if (response.status === 429) {
+                    continue;
+                }
+                
+                lastError = await response.text();
+            } catch (err) {
+                lastError = err.message;
+                continue;
             }
-            
-            return res.status(500).json({ error: 'Failed to generate recipe from AI', details: errorText.substring(0, 200) });
         }
         
-        const data = await response.json();
-        const recipe = data.choices?.[0]?.message?.content;
-        
-        if (!recipe) {
-            return res.status(500).json({ error: 'No recipe generated' });
-        }
-        
-        return res.status(200).json({ recipe });
+        // All models failed
+        return res.status(503).json({ 
+            error: 'All AI services are currently busy. Please try again in a minute.',
+            retry: true
+        });
         
     } catch (error) {
         console.error('Error generating recipe:', error);
