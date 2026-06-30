@@ -128,6 +128,19 @@
       "providerName": "Vercel",
       "resourceId": "fres_61UxUuLueibaG5Msd16UxUQtIoSQsbmCuEgEaVGrA9RQ",
       "serviceId": "hobby"
+    },
+    "vercel-project": {
+      "configuration": {
+        "name": "recipe-generator"
+      },
+      "createdAt": "2026-06-30T19:08:01.501Z",
+      "lastRevealedAt": "2026-06-30T19:08:02.234Z",
+      "lastStatus": "complete",
+      "name": "vercel-project",
+      "providerId": "prvdr_61ULUAr4zlQgZkvXY5LsG",
+      "providerName": "Vercel",
+      "resourceId": "fres_61UxUy7IG318B37pR16UxUQtIoSQsbmCuEgEaVGrAG3M",
+      "serviceId": "project"
     }
   }
 }

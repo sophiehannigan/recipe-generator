@@ -49,6 +49,11 @@
       "name": "vercel-plan",
       "providerName": "Vercel",
       "serviceId": "hobby"
+    },
+    "vercel-project": {
+      "name": "vercel-project",
+      "providerName": "Vercel",
+      "serviceId": "project"
     }
   }
 }
