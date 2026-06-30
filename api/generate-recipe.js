@@ -94,10 +94,43 @@ Make it creative and tasty!`;
             }
         }
         
-        // All models failed
-        return res.status(503).json({ 
-            error: 'All AI services are currently busy. Please try again in a minute.',
-            retry: true
+        // All models failed - use demo recipe
+        const demoRecipe = `🍳 ${ingredients.split(',')[0].trim().toUpperCase()} DELIGHT
+
+📝 INGREDIENTS:
+${ingredients.split(',').map((ing, i) => `• ${ing.trim()} - ${['2 cups', '1 lb', '3 cloves', '1 tbsp', '2 tsp'][i % 5]}`).join('\n')}
+• Salt and pepper to taste
+• Olive oil for cooking
+${preferences ? `\n(Style: ${preferences})` : ''}
+
+👨‍🍳 INSTRUCTIONS:
+
+1. Prep & Season
+   - Wash and prepare all ingredients
+   - Season with salt and pepper
+
+2. Heat & Cook
+   - Heat olive oil in a large pan over medium-high heat
+   - Add main ingredients and cook until golden (5-7 minutes)
+
+3. Combine & Simmer  
+   - Mix all ingredients together
+   - Reduce heat and simmer for 10-15 minutes
+
+4. Serve & Enjoy
+   - Plate your creation beautifully
+   - Garnish with fresh herbs if available
+
+⏱️ TIME: 25-30 minutes
+🍽️ SERVES: 4 people
+
+💡 TIP: This is a demo recipe! AI models are busy due to hackathon traffic. The app will automatically use real AI when available.
+
+✨ Your recipe has been generated! Click "Save to Favorites" to test the database functionality.`;
+        
+        return res.status(200).json({ 
+            recipe: demoRecipe,
+            isDemo: true
         });
         
     } catch (error) {
