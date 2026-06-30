@@ -65,3 +65,5 @@ All environment variables are automatically managed by Stripe Projects:
 Stripe Projects Hackathon - June 30, 2026
 
 **Time to Build**: ~30 minutes from init to deploy
+
+**Status**: 🚀 Deployed and live!
