@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         const apiKey = process.env.OPENROUTER_PLAN_2_API_KEY;
         
         if (!apiKey) {
-            return res.status(500).json({ error: 'OpenRouter API key not configured' });
+            return res.status(500).json({ error: 'OpenRouter API key not configured. Please add OPENROUTER_PLAN_2_API_KEY to Vercel environment variables.' });
         }
         
         const prompt = `Create a detailed, delicious recipe using these ingredients: ${ingredients}.
@@ -42,7 +42,7 @@ Make it creative and tasty!`;
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${apiKey}`,
-                'HTTP-Referer': 'https://recipe-generator.vercel.app',
+                'HTTP-Referer': 'https://recipe-generator-psi-murex.vercel.app',
                 'X-Title': 'Recipe Generator'
             },
             body: JSON.stringify({
@@ -64,7 +64,16 @@ Make it creative and tasty!`;
         if (!response.ok) {
             const errorText = await response.text();
             console.error('OpenRouter error:', errorText);
-            return res.status(500).json({ error: 'Failed to generate recipe from AI' });
+            
+            // Check if it's a rate limit error
+            if (response.status === 429) {
+                return res.status(429).json({ 
+                    error: 'The AI service is busy right now. Please wait 5 seconds and try again.',
+                    retry: true
+                });
+            }
+            
+            return res.status(500).json({ error: 'Failed to generate recipe from AI', details: errorText.substring(0, 200) });
         }
         
         const data = await response.json();

@@ -215,13 +215,26 @@
                 
                 const data = await response.json();
                 
+                if (response.status === 429 && data.retry) {
+                    // Rate limited - show friendly message
+                    output.textContent = '⏳ The AI is busy right now. Retrying in 5 seconds...';
+                    output.classList.add('active');
+                    
+                    // Auto-retry after 5 seconds
+                    setTimeout(() => {
+                        output.classList.remove('active');
+                        generateRecipe();
+                    }, 5000);
+                    return;
+                }
+                
                 if (data.recipe) {
                     currentRecipe = data.recipe;
                     output.textContent = data.recipe;
                     output.classList.add('active');
                     saveBtn.classList.add('active');
                 } else {
-                    output.textContent = 'Error generating recipe. Please try again.';
+                    output.textContent = 'Error: ' + (data.error || 'Failed to generate recipe. Please try again.');
                     output.classList.add('active');
                 }
             } catch (error) {
