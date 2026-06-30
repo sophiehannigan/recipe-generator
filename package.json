@@ -1,0 +1,17 @@
+{
+  "name": "recipe-generator",
+  "version": "1.0.0",
+  "description": "AI-powered recipe generator built with Stripe Projects",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Build complete'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": ["recipe", "ai", "openrouter", "neon", "vercel"],
+  "author": "Sophie",
+  "license": "MIT",
+  "dependencies": {
+    "pg": "^8.11.3"
+  }
+}

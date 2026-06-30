@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "providers": {
+    "clerk": {
+      "name": "Clerk"
+    },
+    "neon": {
+      "name": "Neon"
+    },
+    "openrouter": {
+      "name": "OpenRouter"
+    },
+    "vercel": {
+      "name": "Vercel"
+    }
+  },
+  "resources": {
+    "clerk-auth": {
+      "name": "clerk-auth",
+      "providerName": "Clerk",
+      "serviceId": "auth"
+    },
+    "clerk-plan": {
+      "name": "clerk-plan",
+      "providerName": "Clerk",
+      "serviceId": "hobby"
+    },
+    "neon-plan": {
+      "name": "neon-plan",
+      "providerName": "Neon",
+      "serviceId": "free"
+    },
+    "neon-postgres": {
+      "name": "neon-postgres",
+      "providerName": "Neon",
+      "serviceId": "postgres"
+    },
+    "openrouter-plan": {
+      "name": "openrouter-plan",
+      "providerName": "OpenRouter",
+      "serviceId": "free"
+    },
+    "openrouter-plan-2": {
+      "name": "openrouter-plan-2",
+      "providerName": "OpenRouter",
+      "serviceId": "free"
+    },
+    "vercel-plan": {
+      "name": "vercel-plan",
+      "providerName": "Vercel",
+      "serviceId": "hobby"
+    }
+  }
+}

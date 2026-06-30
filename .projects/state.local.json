@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "project": {
+    "initializedAt": "2026-06-30T18:59:05.406Z",
+    "merchantDisplayName": "Sophie's Business",
+    "merchantId": "acct_1To6TWFMPSycrA9d",
+    "projectId": "project_61UxUpVEsqPM2YINc16UxUQtIoSQsbmCuEgEaVGrAPa4",
+    "projectName": "recipe-generator"
+  },
+  "providers": {
+    "clerk": {
+      "accountRequestId": "facctrq_61UxUteu2RrIdRJob16UxUQtIoSQsbmCuEgEaVGrA8fg",
+      "configuration": {},
+      "linkedAt": "2026-06-30T19:03:24.924Z",
+      "providerId": "prvdr_61UGOeSW4e0T9Etwn537w",
+      "providerName": "Clerk",
+      "redirectUrl": null,
+      "requestedAt": "2026-06-30T19:03:24.924Z",
+      "status": "complete"
+    },
+    "neon": {
+      "accountRequestId": "facctrq_61UxUs1QBREPIfp8b16UxUQtIoSQsbmCuEgEaVGrADxo",
+      "configuration": {},
+      "linkedAt": "2026-06-30T19:01:42.695Z",
+      "providerId": "prvdr_61UH8uNXFdoJUJOtT54AC",
+      "providerName": "Neon",
+      "redirectUrl": null,
+      "requestedAt": "2026-06-30T19:01:42.695Z",
+      "status": "complete"
+    },
+    "openrouter": {
+      "accountRequestId": "facctrq_61UxUqjUqFdZVDWRv16UxUQtIoSQsbmCuEgEaVGrAGfo",
+      "configuration": {},
+      "linkedAt": "2026-06-30T19:00:29.166Z",
+      "providerId": "prvdr_61URImmFACEuDHEx651IO",
+      "providerName": "OpenRouter",
+      "redirectUrl": null,
+      "requestedAt": "2026-06-30T19:00:29.166Z",
+      "status": "complete"
+    },
+    "vercel": {
+      "accountRequestId": "facctrq_61UxUuGacJPL6Lp7i16UxUQtIoSQsbmCuEgEaVGrAXxQ",
+      "configuration": {},
+      "linkedAt": "2026-06-30T19:04:04.598Z",
+      "providerId": "prvdr_61ULUAr4zlQgZkvXY5LsG",
+      "providerName": "Vercel",
+      "redirectUrl": null,
+      "requestedAt": "2026-06-30T19:04:04.598Z",
+      "status": "complete"
+    }
+  },
+  "resources": {
+    "clerk-auth": {
+      "configuration": {
+        "app_name": "recipe-generator"
+      },
+      "createdAt": "2026-06-30T19:03:35.765Z",
+      "lastRevealedAt": "2026-06-30T19:03:36.711Z",
+      "lastStatus": "complete",
+      "name": "clerk-auth",
+      "providerId": "prvdr_61UGOeSW4e0T9Etwn537w",
+      "providerName": "Clerk",
+      "resourceId": "fres_61UxUtnm5DbjXeMVI16UxUQtIoSQsbmCuEgEaVGrA8G0",
+      "serviceId": "auth"
+    },
+    "clerk-plan": {
+      "configuration": {},
+      "createdAt": "2026-06-30T19:03:29.055Z",
+      "lastRevealedAt": "2026-06-30T19:03:29.636Z",
+      "lastStatus": "complete",
+      "name": "clerk-plan",
+      "providerId": "prvdr_61UGOeSW4e0T9Etwn537w",
+      "providerName": "Clerk",
+      "resourceId": "fres_61UxUtihtcQPuRh7J16UxUQtIoSQsbmCuEgEaVGrA8zI",
+      "serviceId": "hobby"
+    },
+    "neon-plan": {
+      "configuration": {},
+      "createdAt": "2026-06-30T19:01:45.034Z",
+      "lastRevealedAt": "2026-06-30T19:01:45.553Z",
+      "lastStatus": "complete",
+      "name": "neon-plan",
+      "providerId": "prvdr_61UH8uNXFdoJUJOtT54AC",
+      "providerName": "Neon",
+      "resourceId": "fres_61UxUs4IPNVjJmq3P16UxUQtIoSQsbmCuEgEaVGrA6dU",
+      "serviceId": "free"
+    },
+    "neon-postgres": {
+      "configuration": {},
+      "createdAt": "2026-06-30T19:02:09.131Z",
+      "lastRevealedAt": "2026-06-30T19:02:09.647Z",
+      "lastStatus": "complete",
+      "name": "neon-postgres",
+      "providerId": "prvdr_61UH8uNXFdoJUJOtT54AC",
+      "providerName": "Neon",
+      "resourceId": "fres_61UxUsSjvS6pYsqiN16UxUQtIoSQsbmCuEgEaVGrAMCm",
+      "serviceId": "postgres"
+    },
+    "openrouter-plan": {
+      "configuration": {},
+      "createdAt": "2026-06-30T19:00:33.379Z",
+      "lastRevealedAt": "2026-06-30T19:00:33.959Z",
+      "lastStatus": "complete",
+      "name": "openrouter-plan",
+      "providerId": "prvdr_61URImmFACEuDHEx651IO",
+      "providerName": "OpenRouter",
+      "resourceId": "fres_61UxUqskvgJE5iEeT16UxUQtIoSQsbmCuEgEaVGrAS8u",
+      "serviceId": "free"
+    },
+    "openrouter-plan-2": {
+      "configuration": {},
+      "createdAt": "2026-06-30T19:01:12.165Z",
+      "lastRevealedAt": "2026-06-30T19:01:12.723Z",
+      "lastStatus": "complete",
+      "name": "openrouter-plan-2",
+      "providerId": "prvdr_61URImmFACEuDHEx651IO",
+      "providerName": "OpenRouter",
+      "resourceId": "fres_61UxUrUXmWhVmjo0K16UxUQtIoSQsbmCuEgEaVGrACng",
+      "serviceId": "free"
+    },
+    "vercel-plan": {
+      "configuration": {},
+      "createdAt": "2026-06-30T19:04:07.349Z",
+      "lastRevealedAt": "2026-06-30T19:04:07.963Z",
+      "lastStatus": "complete",
+      "name": "vercel-plan",
+      "providerId": "prvdr_61ULUAr4zlQgZkvXY5LsG",
+      "providerName": "Vercel",
+      "resourceId": "fres_61UxUuLueibaG5Msd16UxUQtIoSQsbmCuEgEaVGrA9RQ",
+      "serviceId": "hobby"
+    }
+  }
+}
